@@ -101,7 +101,7 @@ class Config:
         parser.add_argument(
             "--update", action="store_true", help="Update to latest assets"
         )
-        cmd_opts = parser.parse_args()
+        cmd_opts, _ = parser.parse_known_args()
 
         cmd_opts.port = cmd_opts.port if 0 <= cmd_opts.port <= 65535 else 7865
 
@@ -211,21 +211,21 @@ class Config:
             logger.info("Use DirectML instead")
             if (
                 os.path.exists(
-                    "runtime\Lib\site-packages\onnxruntime\capi\DirectML.dll"
+                    r"runtime\Lib\site-packages\onnxruntime\capi\DirectML.dll"
                 )
                 == False
             ):
                 try:
                     os.rename(
-                        "runtime\Lib\site-packages\onnxruntime",
-                        "runtime\Lib\site-packages\onnxruntime-cuda",
+                        r"runtime\Lib\site-packages\onnxruntime",
+                        r"runtime\Lib\site-packages\onnxruntime-cuda",
                     )
                 except:
                     pass
                 try:
                     os.rename(
-                        "runtime\Lib\site-packages\onnxruntime-dml",
-                        "runtime\Lib\site-packages\onnxruntime",
+                        r"runtime\Lib\site-packages\onnxruntime-dml",
+                        r"runtime\Lib\site-packages\onnxruntime",
                     )
                 except:
                     pass
@@ -239,21 +239,21 @@ class Config:
                 logger.info(f"Use {self.instead} instead")
             if (
                 os.path.exists(
-                    "runtime\Lib\site-packages\onnxruntime\capi\onnxruntime_providers_cuda.dll"
+                    r"runtime\Lib\site-packages\onnxruntime\capi\onnxruntime_providers_cuda.dll"
                 )
                 == False
             ):
                 try:
                     os.rename(
-                        "runtime\Lib\site-packages\onnxruntime",
-                        "runtime\Lib\site-packages\onnxruntime-dml",
+                        r"runtime\Lib\site-packages\onnxruntime",
+                        r"runtime\Lib\site-packages\onnxruntime-dml",
                     )
                 except:
                     pass
                 try:
                     os.rename(
-                        "runtime\Lib\site-packages\onnxruntime-cuda",
-                        "runtime\Lib\site-packages\onnxruntime",
+                        r"runtime\Lib\site-packages\onnxruntime-cuda",
+                        r"runtime\Lib\site-packages\onnxruntime",
                     )
                 except:
                     pass
